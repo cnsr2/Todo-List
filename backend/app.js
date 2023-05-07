@@ -45,6 +45,11 @@ app.post('/changetodo', async (req, res) => {
         console.error('Güncelleme hatası:', error);
     }
 })
+app.post('/deletetodo/:id', async (req, res) => {
+    const id = req.params.id
+    await Todo.deleteOne({ _id: id });
+    res.status(200);
+});
 
 
 app.listen(5173, () => {
